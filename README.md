@@ -654,21 +654,27 @@ This flow is the foundation of backend development.
 
 ---
 
-# 📷 Project Screenshots
+## 📸 Project Overview
 
-## Project Overview
-
-```md
-![Project Overview](images/project-overview.png)
-```
+<p align="center">
+  <img src="images/project-overview.png" alt="Project Overview" width="900">
+</p>
 
 ---
 
-## API Testing
+## 🧪 API Testing
 
-```md
-![API Testing](images/api-testing.png)
-```
+<p align="center">
+  <img src="images/api-testing.png" alt="API Testing" width="900">
+</p>
+
+---
+
+## 📂 GitHub Repository
+
+<p align="center">
+  <img src="images/github-repository.png" alt="GitHub Repository" width="900">
+</p>
 
 ---
 
