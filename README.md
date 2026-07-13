@@ -399,6 +399,180 @@ uvicorn main:app --reload
 - `--reload` → Automatically restarts the server whenever the code changes.
 
 ---
+# 🚀 Getting Started
+
+Follow the steps below to run this project on your local machine.
+
+---
+
+## Step 1 – Clone the Repository
+
+Open your terminal and run:
+
+```bash
+git clone https://github.com/Gnaneshwarsreepathi/backend-ai-week1.git
+```
+
+---
+
+## Step 2 – Navigate to the Project Folder
+
+```bash
+cd backend-ai-week1
+```
+
+---
+
+## Step 3 – Verify Python Installation
+
+Check whether Python is installed.
+
+```bash
+python3 --version
+```
+
+Expected output:
+
+```text
+Python 3.x.x
+```
+
+If Python is not installed, download it from:
+
+https://www.python.org/downloads/
+
+---
+
+## Step 4 – Create a Virtual Environment
+
+```bash
+python3 -m venv venv
+```
+
+This creates an isolated Python environment for the project.
+
+---
+
+## Step 5 – Activate the Virtual Environment
+
+### macOS / Linux
+
+```bash
+source venv/bin/activate
+```
+
+### Windows (Command Prompt)
+
+```cmd
+venv\Scripts\activate
+```
+
+After activation, your terminal should display:
+
+```text
+(venv)
+```
+
+---
+
+## Step 6 – Install Project Dependencies
+
+Install all required Python packages.
+
+```bash
+pip install -r requirements.txt
+```
+
+This command installs every dependency listed in `requirements.txt`.
+
+---
+
+## Step 7 – Start the FastAPI Server
+
+```bash
+uvicorn main:app --reload
+```
+
+If everything is successful, you should see output similar to:
+
+```text
+INFO:     Uvicorn running on http://127.0.0.1:8000
+```
+
+Leave this terminal running.
+
+---
+
+## Step 8 – Open the Application
+
+Open your browser and visit:
+
+```
+http://127.0.0.1:8000/
+```
+
+Expected response:
+
+```json
+{
+    "message": "Hello from FlyRank Backend AI Internship!"
+}
+```
+
+---
+
+## Step 9 – Test the Second Endpoint
+
+Open:
+
+```
+http://127.0.0.1:8000/about
+```
+
+Expected response:
+
+```json
+{
+    "name": "Sreepathi Gnaneshwar",
+    "track": "Backend AI Engineering",
+    "week": 1
+}
+```
+
+---
+
+## Step 10 – Open Swagger Documentation
+
+FastAPI automatically generates interactive API documentation.
+
+Open:
+
+```
+http://127.0.0.1:8000/docs
+```
+
+You can test both endpoints directly from the browser.
+
+---
+
+## Step 11 – Test Using curl
+
+Open a new terminal (keep the server running).
+
+Run:
+
+```bash
+curl http://127.0.0.1:8000/
+```
+
+Then run:
+
+```bash
+curl http://127.0.0.1:8000/about
+```
+
+If both commands return JSON responses, the project has been set up successfully.
+
 
 # 🧪 Testing the API
 
