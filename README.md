@@ -1,4 +1,21 @@
 # 🚀 Backend AI Engineering – Week 1
+
+<div align="center">
+
+## Building My First Backend API with FastAPI
+
+**FlyRank AI Internship | Backend AI Engineering Track**
+
+![Python](https://img.shields.io/badge/Python-3.9-blue?logo=python)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi)
+![REST API](https://img.shields.io/badge/REST-API-green)
+![GitHub](https://img.shields.io/badge/GitHub-Portfolio-black?logo=github)
+
+</div>
+
+---
+
+# 🚀 Backend AI Engineering – Week 1
 ## Building My First Backend API with FastAPI
 
 > **FlyRank AI Internship | Backend AI Engineering Track**
@@ -20,20 +37,6 @@ Every modern application—whether it's ChatGPT, Amazon, Netflix, or Instagram�
 This project helped me understand that process by building a minimal backend using **FastAPI**.
 
 ---
-# 🚀 Backend AI Engineering – Week 1
-
-<div align="center">
-
-## Building My First Backend API with FastAPI
-
-**FlyRank AI Internship | Backend AI Engineering Track**
-
-![Python](https://img.shields.io/badge/Python-3.9-blue?logo=python)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi)
-![REST API](https://img.shields.io/badge/REST-API-green)
-![GitHub](https://img.shields.io/badge/GitHub-Portfolio-black?logo=github)
-
-</div>
 
 ---
 # 🎯 Assignment Goal
