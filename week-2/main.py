@@ -5,4 +5,14 @@ app = FastAPI()
 
 @app.get("/")
 def home():
-    return {"message": "Hello from Week 2 Task API!"}
+    return {
+        "message": "Task API is running",
+        "docs": "/docs"
+    }
+
+
+@app.get("/health")
+def health():
+    return {
+        "status": "ok"
+    }
