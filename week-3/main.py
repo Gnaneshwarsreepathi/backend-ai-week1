@@ -1,8 +1,10 @@
 from pathlib import Path
+from typing import Optional
 import sqlite3
 
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
+from pydantic import BaseModel
 
 
 app = FastAPI(
@@ -12,33 +14,21 @@ app = FastAPI(
 )
 
 
-# Absolute path of the week-3 folder
 BASE_DIR = Path(__file__).resolve().parent
-
-# Database will be created inside week-3
 DATABASE_PATH = BASE_DIR / "tasks.db"
 
 
+class TaskCreate(BaseModel):
+    title: Optional[str] = None
+
+
 def get_database_connection():
-    """
-    Open a connection to the SQLite database.
-    """
-
     connection = sqlite3.connect(DATABASE_PATH)
-
-    # Allows rows to be accessed using column names:
-    # row["id"], row["title"], row["done"]
     connection.row_factory = sqlite3.Row
-
     return connection
 
 
 def initialize_database():
-    """
-    Create the tasks table and insert three starter tasks
-    only when the table is empty.
-    """
-
     with get_database_connection() as connection:
 
         connection.execute(
@@ -55,9 +45,7 @@ def initialize_database():
             "SELECT COUNT(*) AS task_count FROM tasks"
         ).fetchone()
 
-        task_count = result["task_count"]
-
-        if task_count == 0:
+        if result["task_count"] == 0:
             example_tasks = [
                 ("Learn SQLite", 0),
                 ("Connect FastAPI to a database", 0),
@@ -76,10 +64,6 @@ def initialize_database():
 
 
 def row_to_task(row):
-    """
-    Convert a SQLite row into a JSON-compatible dictionary.
-    """
-
     return {
         "id": row["id"],
         "title": row["title"],
@@ -87,7 +71,6 @@ def row_to_task(row):
     }
 
 
-# Create database and table when the application starts
 initialize_database()
 
 
@@ -109,10 +92,6 @@ def health_check():
 
 @app.get("/tasks")
 def get_tasks():
-    """
-    Read all tasks from the SQLite database.
-    """
-
     with get_database_connection() as connection:
 
         rows = connection.execute(
@@ -128,10 +107,6 @@ def get_tasks():
 
 @app.get("/tasks/{task_id}")
 def get_task(task_id: int):
-    """
-    Read one task from the SQLite database using its ID.
-    """
-
     with get_database_connection() as connection:
 
         row = connection.execute(
@@ -150,3 +125,38 @@ def get_task(task_id: int):
             )
 
         return row_to_task(row)
+
+
+@app.post("/tasks", status_code=201)
+def create_task(task: TaskCreate):
+    if task.title is None or not task.title.strip():
+        return JSONResponse(
+            status_code=400,
+            content={"error": "Title is required"}
+        )
+
+    clean_title = task.title.strip()
+
+    with get_database_connection() as connection:
+
+        cursor = connection.execute(
+            """
+            INSERT INTO tasks (title, done)
+            VALUES (?, ?)
+            """,
+            (clean_title, 0)
+        )
+
+        new_task_id = cursor.lastrowid
+        connection.commit()
+
+        new_task = connection.execute(
+            """
+            SELECT id, title, done
+            FROM tasks
+            WHERE id = ?
+            """,
+            (new_task_id,)
+        ).fetchone()
+
+        return row_to_task(new_task)
